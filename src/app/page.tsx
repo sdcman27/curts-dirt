@@ -27,7 +27,7 @@ const services = [
       "Single-load deliveries sized for backyards, raised beds, and lawn refreshes across Butler County.",
     details: [
       "Flexible delivery windows Monday through Saturday",
-      "Dump exactly where you need it—driveway, curbside, or job site",
+      "Dump as close to where you need it—driveway, curbside, or job site",
       "Transparent pricing with fuel and labor built in",
     ],
   },
@@ -67,7 +67,7 @@ const steps = [
   {
     title: "Get straight-to-the-spot dumping",
     description:
-      "We place the load exactly where you need it so you can spread and get back to building sooner.",
+      "We place the load as close to where you need it so you can spread and get back to building sooner.",
   },
 ];
 

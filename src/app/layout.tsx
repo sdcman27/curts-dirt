@@ -13,14 +13,14 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Curt's Dirt | Premium Soil Delivery in the Treasure Valley",
+  title: "Curt's Dirt | Premium Soil Delivery in the Butler County",
   description:
-    "Curt's Dirt delivers screened topsoil, compost, and fill dirt to Boise and the Treasure Valley with quick scheduling and honest pricing.",
+    "Curt's Dirt delivers screened topsoil, compost, and fill dirt to Boise and the Butler County with quick scheduling and honest pricing.",
   metadataBase: new URL("https://curtsdirt.com"),
   openGraph: {
     title: "Curt's Dirt",
     description:
-      "Local family business delivering premium topsoil, compost, and fill dirt across the Treasure Valley.",
+      "Local family business delivering premium topsoil, compost, and fill dirt across the Butler County.",
     url: "https://curtsdirt.com",
     siteName: "Curt's Dirt",
     type: "website",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Curt's Dirt",
     description:
-      "Premium screened soil delivered to Boise, Meridian, Nampa, and the surrounding Treasure Valley communities.",
+      "Premium screened soil delivered to Evan's City, Meridian, Callery, Cranberry and Seven Fieldsand the surrounding Butler County communities.",
   },
 };
 
