@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent } from "react";
+import { FormEvent, useMemo, useState } from "react";
 
 const highlights = [
   {
@@ -85,6 +85,31 @@ const testimonials = [
 ];
 
 export default function Home() {
+  const [length, setLength] = useState("20");
+  const [width, setWidth] = useState("15");
+  const [depth, setDepth] = useState("4");
+
+  const calculator = useMemo(() => {
+    const lengthFeet = parseFloat(length) || 0;
+    const widthFeet = parseFloat(width) || 0;
+    const depthInches = parseFloat(depth) || 0;
+    const depthFeet = depthInches / 12;
+
+    const cubicFeet = lengthFeet * widthFeet * depthFeet;
+    const cubicYards = cubicFeet / 27;
+    const tonsPerYard = 1.1;
+    const tons = cubicYards * tonsPerYard;
+    const recommendedYards = cubicYards > 0 ? Math.ceil(cubicYards * 4) / 4 : 0;
+
+    return {
+      cubicFeet,
+      cubicYards,
+      tons,
+      recommendedYards,
+      tonsPerYard,
+    };
+  }, [depth, length, width]);
+
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
@@ -237,6 +262,98 @@ export default function Home() {
                 </ul>
               </article>
             ))}
+          </div>
+        </section>
+
+        <section
+          id="calculator"
+          className="grid gap-10 rounded-3xl border border-white/10 bg-white/5 p-8 lg:grid-cols-[1.1fr_0.9fr]"
+        >
+          <div className="space-y-6">
+            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-amber-400">Topsoil calculator</p>
+            <h2 className="text-3xl font-semibold text-white sm:text-4xl">Estimate how much to order</h2>
+            <p className="max-w-xl text-lg text-zinc-300">
+              Plug in the area you&apos;re covering and how deep you&apos;d like the soil. We&apos;ll estimate your volume in cubic yards and
+              convert it to tons using an average of {calculator.tonsPerYard.toFixed(1)} tons per cubic yard of screened topsoil.
+            </p>
+            <p className="text-sm text-zinc-400">
+              Tip: Most new lawns and garden beds need 3–6 inches of fresh material. Always round up so you have a little extra
+              for leveling.
+            </p>
+          </div>
+          <div className="grid gap-6">
+            <div className="grid gap-4 sm:grid-cols-2">
+              <label className="grid gap-2 text-sm" htmlFor="length">
+                <span className="text-xs font-semibold uppercase tracking-[0.2em] text-amber-400">Length (feet)</span>
+                <input
+                  id="length"
+                  inputMode="decimal"
+                  min="0"
+                  name="length"
+                  onChange={(event) => setLength(event.target.value)}
+                  value={length}
+                  type="number"
+                  step="0.1"
+                  className="rounded-xl border border-white/10 bg-neutral-900/70 px-4 py-3 text-white placeholder:text-zinc-500 focus:border-amber-400 focus:outline-none"
+                />
+              </label>
+              <label className="grid gap-2 text-sm" htmlFor="width">
+                <span className="text-xs font-semibold uppercase tracking-[0.2em] text-amber-400">Width (feet)</span>
+                <input
+                  id="width"
+                  inputMode="decimal"
+                  min="0"
+                  name="width"
+                  onChange={(event) => setWidth(event.target.value)}
+                  value={width}
+                  type="number"
+                  step="0.1"
+                  className="rounded-xl border border-white/10 bg-neutral-900/70 px-4 py-3 text-white placeholder:text-zinc-500 focus:border-amber-400 focus:outline-none"
+                />
+              </label>
+            </div>
+            <label className="grid gap-2 text-sm" htmlFor="depth">
+              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-amber-400">Depth (inches)</span>
+              <input
+                id="depth"
+                inputMode="decimal"
+                min="0"
+                name="depth"
+                onChange={(event) => setDepth(event.target.value)}
+                value={depth}
+                type="number"
+                step="0.1"
+                className="rounded-xl border border-white/10 bg-neutral-900/70 px-4 py-3 text-white placeholder:text-zinc-500 focus:border-amber-400 focus:outline-none"
+              />
+            </label>
+            <div className="rounded-2xl border border-white/10 bg-neutral-900/70 p-6">
+              <h3 className="text-lg font-semibold text-white">Material needed</h3>
+              <dl className="mt-4 space-y-3 text-sm text-zinc-200">
+                <div className="flex items-baseline justify-between gap-4">
+                  <dt className="text-zinc-400">Cubic yards</dt>
+                  <dd className="text-base font-semibold text-white">
+                    {calculator.cubicYards > 0 ? calculator.cubicYards.toFixed(2) : "0.00"}
+                  </dd>
+                </div>
+                <div className="flex items-baseline justify-between gap-4">
+                  <dt className="text-zinc-400">Rounded up (¼ yard)</dt>
+                  <dd className="text-base font-semibold text-white">
+                    {calculator.recommendedYards > 0 ? calculator.recommendedYards.toFixed(2) : "0.00"}
+                  </dd>
+                </div>
+                <div className="flex items-baseline justify-between gap-4">
+                  <dt className="text-zinc-400">Tons (est.)</dt>
+                  <dd className="text-base font-semibold text-white">
+                    {calculator.tons > 0 ? calculator.tons.toFixed(2) : "0.00"}
+                  </dd>
+                </div>
+              </dl>
+            </div>
+            <p className="text-xs text-zinc-500">
+              Calculations use length × width × depth to find volume. Divide by 27 for cubic yards and multiply by
+              {" "}
+              {calculator.tonsPerYard.toFixed(1)} to estimate tons. Actual weights vary with moisture and composition.
+            </p>
           </div>
         </section>
 
