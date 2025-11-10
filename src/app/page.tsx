@@ -190,7 +190,7 @@ export default function Home() {
               Premium screened topsoil, compost, and fill dirt delivered on your schedule.
             </p>
             <p className="text-4xl font-semibold leading-tight text-white sm:text-5xl">
-              From backyard garden beds to large landscape installs, Curt brings the dirt and the know-how.
+              From backyard garden beds and large landscape installs to filling canyons with our fill dirt, Curt brings the dirt and the know-how.
             </p>
             <p className="max-w-xl text-lg text-zinc-300">
               Curt&apos;s Dirt is a family business serving Butler County. Based in Evan&apos;s City but serving, Meridan, Callery, Mars, Cranberry, and Butler. Every load is
