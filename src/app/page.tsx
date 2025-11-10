@@ -133,7 +133,7 @@ export default function Home() {
     ].filter(Boolean);
 
     const body = summaryLines.join("\n");
-    const mailtoUrl = `mailto:hello@curtsdirt.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    const mailtoUrl = `mailto:curt.chritzman@ymail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
     if (typeof window !== "undefined") {
       window.location.href = mailtoUrl;
@@ -414,7 +414,7 @@ export default function Home() {
               </p>
               <p>
                 <span className="font-semibold text-white">Email:</span>{" "}
-                <a className="text-amber-300 hover:text-amber-200" href="mailto:hello@curtsdirt.com">
+                <a className="text-amber-300 hover:text-amber-200" href="mailto:curt.chritzman@ymail.com">
                   hello@curtsdirt.com
                 </a>
               </p>
