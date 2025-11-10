@@ -24,7 +24,7 @@ const services = [
   {
     name: "Residential delivery",
     description:
-      "Single-load deliveries sized for backyards, raised beds, and lawn refreshes across the Treasure Valley.",
+      "Single-load deliveries sized for backyards, raised beds, and lawn refreshes across Butler County.",
     details: [
       "Flexible delivery windows Monday through Saturday",
       "Dump exactly where you need it—driveway, curbside, or job site",
@@ -75,12 +75,12 @@ const testimonials = [
   {
     quote:
       "Curt went above and beyond. He squeezed us in the same week we called and the soil quality beat the big box stores.",
-    name: "Melissa, Boise",
+    name: "Melissa, Butler",
   },
   {
     quote:
-      "Reliable, communicative, and fair pricing. Every load is screened and clean—perfect for our landscape clients.",
-    name: "Daniel, Meridian contractor",
+      "Great place for dirt! Much better quality than the other landscape supply yards nearby.",
+    name: "Chris Koss, Meridian",
   },
 ];
 
@@ -126,7 +126,7 @@ export default function Home() {
               Curt&apos;s Dirt
             </p>
             <h1 className="text-3xl font-semibold text-white sm:text-4xl">
-              Treasure Valley soil delivery made simple.
+              Farm fresh soil, delivery made simple.
             </h1>
           </div>
           <nav className="flex flex-wrap items-center gap-4 text-sm font-medium text-zinc-300 md:justify-end">
@@ -156,7 +156,7 @@ export default function Home() {
               From backyard garden beds to large landscape installs, Curt brings the dirt and the know-how.
             </p>
             <p className="max-w-xl text-lg text-zinc-300">
-              Curt&apos;s Dirt is a family business serving Boise, Meridian, Eagle, Kuna, Nampa, and Caldwell. Every load is
+              Curt&apos;s Dirt is a family business serving Butler County. Based in Evan&apos;s City but serving, Meridan, Callery, Mars, Cranberry, and Butler. Every load is
               screened, locally sourced, and delivered with the communication you expect from a neighbor.
             </p>
             <div className="grid gap-4 sm:grid-cols-3">
@@ -172,7 +172,7 @@ export default function Home() {
             </div>
             <div className="flex flex-col gap-4 sm:flex-row">
               <a
-                href="tel:12085551234"
+                href="tel:7248562033"
                 className="inline-flex items-center justify-center rounded-full bg-amber-400 px-6 py-3 text-base font-semibold text-neutral-900 transition hover:bg-amber-300"
               >
                 Call Curt to schedule
@@ -291,8 +291,8 @@ export default function Home() {
             <div className="space-y-4 text-sm">
               <p>
                 <span className="font-semibold text-white">Phone:</span>{" "}
-                <a className="text-amber-300 hover:text-amber-200" href="tel:12085551234">
-                  (208) 555-1234
+                <a className="text-amber-300 hover:text-amber-200" href="tel:7248562033">
+                  (724) 856-2033
                 </a>
               </p>
               <p>
@@ -302,7 +302,7 @@ export default function Home() {
                 </a>
               </p>
               <p>
-                <span className="font-semibold text-white">Service area:</span> Boise • Meridian • Eagle • Kuna • Nampa • Caldwell
+                <span className="font-semibold text-white">Service area:</span> Butler • Meridian • Evans City • Mars • Cranberry • Seven Fields 
               </p>
             </div>
           </div>
@@ -359,7 +359,7 @@ export default function Home() {
       <footer className="border-t border-white/10 bg-neutral-950/80">
         <div className="mx-auto flex w-full max-w-6xl flex-col gap-3 px-6 py-8 text-sm text-zinc-500 sm:flex-row sm:items-center sm:justify-between">
           <p>© {new Date().getFullYear()} Curt&apos;s Dirt. All rights reserved.</p>
-          <p>Boise, Idaho • Licensed & Insured • Contractor #DIRT-2024</p>
+          <p>Evan&apos;s City, Pennsylvania • Licensed & Insured • Contractor</p>
         </div>
       </footer>
     </div>
