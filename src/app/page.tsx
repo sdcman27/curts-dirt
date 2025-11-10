@@ -255,7 +255,6 @@ export default function Home() {
               fill
               className="object-cover opacity-60"
               sizes="(min-width: 1024px) 420px, 100vw"
-              priority
             />
             <div className="absolute inset-0 -z-10 bg-gradient-to-br from-neutral-950/80 via-neutral-950/60 to-transparent" />
             <div className="relative z-10 space-y-4">
