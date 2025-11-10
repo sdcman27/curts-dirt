@@ -194,7 +194,7 @@ export default function Home() {
             </p>
             <p className="max-w-xl text-lg text-zinc-300">
               Curt&apos;s Dirt is a family business serving Butler County. Based in Evan&apos;s City but serving, Meridan, Callery, Mars, Cranberry, and Butler. Every load is
-              screened, locally sourced, and delivered with the communication you expect from a neighbor.
+              locally sourced, and delivered with the communication you expect from a neighbor.
             </p>
             <div className="grid gap-4 sm:grid-cols-3">
               {highlights.map((highlight) => (
