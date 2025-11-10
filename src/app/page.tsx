@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { FormEvent, useMemo, useState } from "react";
 
 const highlights = [
@@ -146,10 +147,21 @@ export default function Home() {
     <div className="min-h-screen bg-neutral-950">
       <header className="border-b border-white/10 bg-neutral-950/80 backdrop-blur">
         <div className="mx-auto flex w-full max-w-6xl flex-col gap-6 px-6 py-10 md:flex-row md:items-center md:justify-between">
-          <div className="flex flex-col gap-1 text-left">
-            <p className="text-sm font-medium uppercase tracking-[0.3em] text-amber-400">
-              Curt&apos;s Dirt
-            </p>
+          <div className="flex flex-col gap-3 text-left">
+            <div className="flex items-center gap-3">
+              <div className="h-12 w-12 overflow-hidden rounded-full border border-white/10 bg-neutral-900/70 sm:h-14 sm:w-14">
+                <Image
+                  src="/images/logo-seedling-badge.jpg"
+                  alt="Curt's Dirt seedling badge logo"
+                  width={56}
+                  height={56}
+                  className="h-full w-full object-contain"
+                />
+              </div>
+              <p className="text-sm font-medium uppercase tracking-[0.3em] text-amber-400">
+                Curt&apos;s Dirt
+              </p>
+            </div>
             <h1 className="text-3xl font-semibold text-white sm:text-4xl">
               Farm fresh soil, delivery made simple.
             </h1>
@@ -210,9 +222,42 @@ export default function Home() {
               </a>
             </div>
           </div>
-          <div className="relative isolate overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-amber-500/10 via-amber-400/5 to-transparent p-8">
-            <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,_rgba(250,204,21,0.4),_transparent_60%)]" />
-            <div className="space-y-4">
+            <div className="flex flex-col gap-4 rounded-3xl border border-white/10 bg-white/5 p-4 text-sm text-zinc-300 sm:flex-row sm:items-center sm:justify-between">
+              <div className="flex items-center gap-3">
+                <Image
+                  src="/images/logo-excavator-badge.jpg"
+                  alt="Curt's Dirt excavator badge logo"
+                  width={64}
+                  height={64}
+                  className="h-12 w-12 object-contain sm:h-16 sm:w-16"
+                />
+                <span className="max-w-[16rem]">
+                  Badge art we use on our trucks to signal soil deliveries are on the way.
+                </span>
+              </div>
+              <div className="flex items-center gap-3 border-t border-white/10 pt-4 sm:border-l sm:border-t-0 sm:pl-4 sm:pt-0">
+                <Image
+                  src="/images/logo-excavator-trees.jpg"
+                  alt="Curt's Dirt landscape badge logo"
+                  width={64}
+                  height={64}
+                  className="h-12 w-12 object-contain sm:h-16 sm:w-16"
+                />
+                <span className="max-w-[16rem]">
+                  Alternate mark we share with landscape partners across Butler County.
+                </span>
+              </div>
+            </div>
+          <div className="relative isolate overflow-hidden rounded-3xl border border-white/10 bg-neutral-900/70 p-8">
+            <Image
+              src="/images/site-excavator-daylight.jpg"
+              alt="Curt's Dirt excavator loading screened soil on a sunny day"
+              fill
+              className="object-cover opacity-60"
+              sizes="(min-width: 1024px) 420px, 100vw"
+            />
+            <div className="absolute inset-0 -z-10 bg-gradient-to-br from-neutral-950/80 via-neutral-950/60 to-transparent" />
+            <div className="relative z-10 space-y-4">
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-400">
                 What&apos;s included
               </p>
@@ -235,6 +280,16 @@ export default function Home() {
                 </li>
               </ul>
             </div>
+              <div className="flex items-center gap-3 pt-2 text-xs uppercase tracking-[0.2em] text-amber-200">
+                <Image
+                  src="/images/logo-excavator-badge.jpg"
+                  alt="Curt's Dirt excavator badge"
+                  width={44}
+                  height={44}
+                  className="h-11 w-11 object-contain"
+                />
+                <span>Locally owned & operated</span>
+              </div>
           </div>
         </section>
 
@@ -419,10 +474,31 @@ export default function Home() {
                 </a>
               </p>
               <p>
-                <span className="font-semibold text-white">Service area:</span> Butler • Meridian • Evans City • Mars • Cranberry • Seven Fields 
+                <span className="font-semibold text-white">Service area:</span> Butler • Meridian • Evans City • Mars • Cranberry • Seven Fields
               </p>
             </div>
           </div>
+            <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-neutral-900/60">
+              <div className="relative aspect-[4/3]">
+                <Image
+                  src="/images/site-excavator-overcast.jpg"
+                  alt="Curt's Dirt excavator screening soil on an overcast day"
+                  fill
+                  className="object-cover"
+                  sizes="(min-width: 1024px) 420px, 100vw"
+                />
+              </div>
+              <div className="pointer-events-none absolute left-4 top-4 flex items-center gap-3 rounded-full border border-white/20 bg-neutral-950/70 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-amber-300">
+                <Image
+                  src="/images/logo-excavator-trees.jpg"
+                  alt="Curt's Dirt landscape badge"
+                  width={36}
+                  height={36}
+                  className="h-9 w-9 object-contain"
+                />
+                <span>Field ready</span>
+              </div>
+            </div>
           <form className="grid gap-4 text-sm" onSubmit={handleSubmit}>
             <div className="grid gap-2">
               <label className="text-xs font-semibold uppercase tracking-[0.2em] text-amber-400" htmlFor="name">
