@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { FormEvent, useMemo, useState } from "react";
+import { FormEvent, useEffect, useMemo, useState } from "react";
 
 const highlights = [
   {
@@ -89,6 +89,42 @@ export default function Home() {
   const [length, setLength] = useState("20");
   const [width, setWidth] = useState("15");
   const [depth, setDepth] = useState("4");
+
+  useEffect(() => {
+    if (typeof window === "undefined") {
+      return;
+    }
+
+    const elements = Array.from(
+      document.querySelectorAll<HTMLElement>("[data-animate]")
+    );
+
+    if (!("IntersectionObserver" in window)) {
+      elements.forEach((element) => {
+        element.classList.add("is-visible");
+      });
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.1,
+        rootMargin: "0px 0px -5% 0px",
+      }
+    );
+
+    elements.forEach((element) => observer.observe(element));
+
+    return () => observer.disconnect();
+  }, []);
 
   const calculator = useMemo(() => {
     const lengthFeet = parseFloat(length) || 0;
@@ -197,10 +233,12 @@ export default function Home() {
               locally sourced, and delivered with the communication you expect from a neighbor.
             </p>
             <div className="grid gap-4 sm:grid-cols-3">
-              {highlights.map((highlight) => (
+              {highlights.map((highlight, index) => (
                 <div
                   key={highlight.title}
                   className="rounded-2xl border border-white/10 bg-white/5 p-4 shadow-[0_0_50px_-30px_rgba(250,204,21,0.8)]"
+                  data-animate
+                  style={{ transitionDelay: `${index * 120}ms` }}
                 >
                   <h3 className="text-base font-semibold text-white">{highlight.title}</h3>
                   <p className="mt-2 text-sm text-zinc-300">{highlight.description}</p>
@@ -222,7 +260,11 @@ export default function Home() {
               </a>
             </div>
           </div>
-            <div className="flex flex-col gap-4 rounded-3xl border border-white/10 bg-white/5 p-4 text-sm text-zinc-300 sm:flex-row sm:items-center sm:justify-between">
+            <div
+              className="flex flex-col gap-4 rounded-3xl border border-white/10 bg-white/5 p-4 text-sm text-zinc-300 sm:flex-row sm:items-center sm:justify-between"
+              data-animate
+              style={{ transitionDelay: "160ms" }}
+            >
               <div className="flex items-center gap-3">
                 <Image
                   src="/images/logo-excavator-badge.jpg"
@@ -248,7 +290,11 @@ export default function Home() {
                 </span>
               </div>
             </div>
-          <div className="relative isolate overflow-hidden rounded-3xl border border-white/10 bg-neutral-900/70 p-8">
+          <div
+            className="relative isolate overflow-hidden rounded-3xl border border-white/10 bg-neutral-900/70 p-8"
+            data-animate
+            style={{ transitionDelay: "200ms" }}
+          >
             <Image
               src="/images/site-excavator-daylight.jpg"
               alt="Curt's Dirt excavator loading screened soil on a sunny day"
@@ -303,8 +349,13 @@ export default function Home() {
             </p>
           </div>
           <div className="grid gap-8 md:grid-cols-3">
-            {services.map((service) => (
-              <article key={service.name} className="flex flex-col gap-4 rounded-3xl border border-white/10 bg-white/5 p-6">
+            {services.map((service, index) => (
+              <article
+                key={service.name}
+                className="flex flex-col gap-4 rounded-3xl border border-white/10 bg-white/5 p-6"
+                data-animate
+                style={{ transitionDelay: `${index * 120}ms` }}
+              >
                 <h3 className="text-xl font-semibold text-white">{service.name}</h3>
                 <p className="text-sm text-zinc-300">{service.description}</p>
                 <ul className="mt-2 space-y-3 text-sm text-zinc-200">
@@ -423,7 +474,12 @@ export default function Home() {
           </div>
           <div className="grid gap-6 md:grid-cols-3">
             {steps.map((step, index) => (
-              <div key={step.title} className="flex flex-col gap-4 rounded-3xl border border-white/10 bg-white/5 p-6">
+              <div
+                key={step.title}
+                className="flex flex-col gap-4 rounded-3xl border border-white/10 bg-white/5 p-6"
+                data-animate
+                style={{ transitionDelay: `${index * 120}ms` }}
+              >
                 <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-amber-400 text-lg font-semibold text-neutral-900">
                   0{index + 1}
                 </span>
@@ -443,8 +499,13 @@ export default function Home() {
             </p>
           </div>
           <div className="grid gap-6 md:grid-cols-2">
-            {testimonials.map((testimonial) => (
-              <figure key={testimonial.name} className="flex h-full flex-col justify-between gap-6 rounded-3xl border border-white/10 bg-white/5 p-6">
+            {testimonials.map((testimonial, index) => (
+              <figure
+                key={testimonial.name}
+                className="flex h-full flex-col justify-between gap-6 rounded-3xl border border-white/10 bg-white/5 p-6"
+                data-animate
+                style={{ transitionDelay: `${index * 140}ms` }}
+              >
                 <blockquote className="text-lg text-white">“{testimonial.quote}”</blockquote>
                 <figcaption className="text-sm font-medium text-amber-300">{testimonial.name}</figcaption>
               </figure>
@@ -478,7 +539,11 @@ export default function Home() {
               </p>
             </div>
           </div>
-            <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-neutral-900/60">
+            <div
+              className="relative overflow-hidden rounded-2xl border border-white/10 bg-neutral-900/60"
+              data-animate
+              style={{ transitionDelay: "120ms" }}
+            >
               <div className="relative aspect-[4/3]">
                 <Image
                   src="/images/site-excavator-overcast.jpg"
