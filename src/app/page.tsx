@@ -153,6 +153,7 @@ export default function Home() {
     const formData = new FormData(event.currentTarget);
     const name = formData.get("name")?.toString().trim() ?? "";
     const email = formData.get("email")?.toString().trim() ?? "";
+    const phone = formData.get("phone")?.toString().trim() ?? "";
     const details = formData.get("details")?.toString().trim() ?? "";
 
     const subject = name ? `Soil delivery request from ${name}` : "Soil delivery request";
@@ -163,6 +164,7 @@ export default function Home() {
       "I'm reaching out through the Curt's Dirt website with a new project.",
       name && `Name: ${name}`,
       email && `Email: ${email}`,
+      phone && `Phone: ${phone}`,
       details && "Project details:",
       details,
       "",
@@ -537,6 +539,14 @@ export default function Home() {
               <p>
                 <span className="font-semibold text-white">Service area:</span> Butler • Meridian • Evans City • Mars • Cranberry • Seven Fields
               </p>
+              <div className="space-y-1">
+                <p>
+                  <span className="font-semibold text-white">Delivery hours:</span> M-F 4-8, Sat-Sun 8-4
+                </p>
+                <p>
+                  <span className="font-semibold text-white">Pickup hours:</span> By appointment only
+                </p>
+              </div>
             </div>
           </div>
             <div
@@ -590,6 +600,18 @@ export default function Home() {
               />
             </div>
             <div className="grid gap-2">
+              <label className="text-xs font-semibold uppercase tracking-[0.2em] text-amber-400" htmlFor="phone">
+                Phone (optional)
+              </label>
+              <input
+                id="phone"
+                name="phone"
+                type="tel"
+                placeholder="(724) 555-1234"
+                className="rounded-xl border border-white/10 bg-neutral-900/70 px-4 py-3 text-white placeholder:text-zinc-500 focus:border-amber-400 focus:outline-none"
+              />
+            </div>
+            <div className="grid gap-2">
               <label className="text-xs font-semibold uppercase tracking-[0.2em] text-amber-400" htmlFor="details">
                 Project details
               </label>
@@ -602,7 +624,7 @@ export default function Home() {
               />
             </div>
             <p className="text-xs text-zinc-500">
-              This form prepares an email and opens it in your default mail app—no information is stored on the site.
+              This form prepares an email and opens it in your default mail app. We do not store any information submitted here.
             </p>
             <button
               type="submit"
